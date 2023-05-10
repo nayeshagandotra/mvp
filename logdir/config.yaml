@@ -76,7 +76,7 @@ rl_device: cuda:0
 graphics_device_id: 0
 num_gpus: 1
 test: false
-resume: 0
+resume: 1000
 logdir: logdir
-cptdir: ''
+cptdir: logdir
 headless: true

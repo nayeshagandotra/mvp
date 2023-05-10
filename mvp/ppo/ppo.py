@@ -265,7 +265,7 @@ class PPO:
                 if self.print_log and it % log_interval == 0:
                     self.save(os.path.join(self.log_dir, 'model_{}.pt'.format(it)))
                 
-                if it >= 1500:
+                if it >= 10:
                     self.save(os.path.join(self.log_dir, 'model_lock.lock'))
 
                 # Use an explicit sync point since we are not syncing stats yet

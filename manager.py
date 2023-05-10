@@ -16,7 +16,7 @@ while True:
         os.system("pkill -f tools/train_ppo.py")  # kill train.py process
         
         # start a subprocess of train.py with a different object name
-        subprocess.Popen(["python", "tools/train_ppo.py", "task=FrankaPickObject"])
+        subprocess.Popen(["python", "tools/train_ppo.py", "task=FrankaPickObject", "cptdir=logdir", "resume=1000"])
         print(f"Started train.py with object {objects[0]}")
         
         
