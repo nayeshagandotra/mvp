@@ -7,6 +7,7 @@ import os
 import torch
 import imageio
 import random
+import time
 
 from typing import Tuple
 from torch import Tensor
@@ -16,6 +17,8 @@ from pixmc.tasks.base.base_task import BaseTask
 
 from isaacgym import gymtorch
 from isaacgym import gymapi
+
+random.seed(time.time())
 
 
 class FrankaPickObject(BaseTask):
@@ -58,8 +61,14 @@ class FrankaPickObject(BaseTask):
             "mug": 0.04,
             "box": 0.0225,
         }
+        objects = ["can", "banana", "mug"]  # list of objects to select from
+        # self.obj_type = self.cfg["env"]["obj_type"]
 
-        self.obj_type = self.cfg["env"]["obj_type"]
+        # select a random object
+        selected_object = random.choice(objects)
+        print(f"Selected object: {selected_object}")
+
+        self.obj_type = selected_object
         assert self.obj_type in self.obj_offsets.keys()
 
         self.obs_type = self.cfg["env"]["obs_type"]

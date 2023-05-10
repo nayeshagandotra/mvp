@@ -208,6 +208,7 @@ class PPO:
                     if self.apply_reset:
                         current_obs = self.vec_env.reset()
                         current_states = self.vec_env.get_state()
+
                     # Compute the action
                     actions, actions_log_prob, values, mu, sigma, current_obs_feats = \
                         self.actor_critic.act(current_obs, current_states)
@@ -263,6 +264,9 @@ class PPO:
                     )
                 if self.print_log and it % log_interval == 0:
                     self.save(os.path.join(self.log_dir, 'model_{}.pt'.format(it)))
+                
+                if it >= 1500:
+                    self.save(os.path.join(self.log_dir, 'model_lock.lock'))
 
                 # Use an explicit sync point since we are not syncing stats yet
                 if self.num_gpus > 1:

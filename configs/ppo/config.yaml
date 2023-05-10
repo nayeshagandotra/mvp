@@ -8,7 +8,7 @@ num_gpus: 1
 
 test: False
 resume: 0
-logdir: "/tmp/debug"
+logdir: "logdir"
 cptdir: ""
 headless: True
 
